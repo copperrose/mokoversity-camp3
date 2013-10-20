@@ -1,4 +1,8 @@
-var gameModule=(function (){
+ /*jslint browser: true, devel: true, closure: true */
+var gameModule = (function (document, $) {
+
+    "use strict";
+
 	var counter=0,
 		scores,
 		timeoutVar,
@@ -49,11 +53,15 @@ var gameModule=(function (){
 
 	function gameOver(){
 		console.log("Final:"+scores);
+
+		var api="http://127.0.0.1:3000/scores?scores=" + scores;
+
+		$.ajax({url: api})
 	}
 
 	return{
 		start:start
-	}
-}) ();
+	};
+}(document, $));
 
 gameModule.start();
