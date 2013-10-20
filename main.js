@@ -1,5 +1,10 @@
 var gameModule=(function (){
 	var counter=0,timeoutVar;
+	/*var canvas = document.getElementById('game');
+	var ctx = canvas.getContext('2d');
+	canvas.width = 480;
+	canvas.height = 320;
+	*/
 
 	function start(){
 
@@ -17,7 +22,7 @@ var gameModule=(function (){
 		ctx.arc(balla, ballb, ballc, 0, Math.PI * 2 , true);
 		ctx.fill();
 
-		if(counter>=10){
+		if(counter>=100){
 
 		}else{
 			timeoutVar=setTimeout(start,1000);//1sec
