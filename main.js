@@ -1,6 +1,6 @@
 var gameModule=(function (){
 	var counter=0,
-		scores=0,
+		scores,
 		timeoutVar,
 		balla,ballb,ballc;
 	//	length=color.length;
@@ -13,10 +13,12 @@ var gameModule=(function (){
 			console.log("Clicked:"+x+","+y);
 
 			if(tmp<ballc*ballc){
+				scores=scores+(100-ballc);
 				console.log("Hit!Your Scores:"+scores);
 			}
 	}
 	function start(){
+		scores=0;
 		document.getElementById("main").addEventListener("click",touchEvent,false);
 		startGame();
 	}
@@ -28,9 +30,9 @@ var gameModule=(function (){
 		canvas.width = 640;
 		canvas.height = 480;
 
-		balla=Math.floor(Math.random()*300);//0~300
-		ballb=Math.floor(Math.random()*500);
-		ballc=Math.floor(Math.random()*100);
+		balla=Math.floor(Math.random()*600);//0~300
+		ballb=Math.floor(Math.random()*450);
+		ballc=Math.floor(Math.random()*80);
 
 		ctx.fillStyle='black';
 		ctx.beginPath();
@@ -40,14 +42,13 @@ var gameModule=(function (){
 		if(counter>=20){
 			gameOver();
 		}else{
-			timeoutVar=setTimeout(start,1000);//1sec
+			timeoutVar=setTimeout(startGame,1000);//1sec
 			counter=counter+1;
-			console.log("counter="+counter);
 		}
 	}
 
 	function gameOver(){
-
+		console.log("Final:"+scores);
 	}
 
 	return{
